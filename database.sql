@@ -52,7 +52,7 @@ CREATE TABLE Billett (
     Område VARCHAR(255) NOT NULL,
     SalNavn VARCHAR(255) NOT NULL,
     ForestillingNummer INTEGER NOT NULL,
-    BillettKjopNummer INT NOT NULL,
+    BillettKjøpNummer INT NOT NULL,
     Billettype VARCHAR(255) NOT NULL,
     TeaterstykkeNavn VARCHAR(255) NOT NULL,
     PRIMARY KEY (
@@ -62,7 +62,7 @@ CREATE TABLE Billett (
         SalNavn,
         ForestillingNummer
     ),
-    FOREIGN KEY (BillettKjopNummer) REFERENCES Billettkjøp(Nummer) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (BillettKjøpNummer) REFERENCES Billettkjøp(Nummer) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (Billettype, TeaterstykkeNavn) REFERENCES BilletType(Billettype, TeaterstykkeNavn) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (RadNr, StolNr, Område, SalNavn) REFERENCES Stol(RadNr, StolNr, Område, Navn) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN Key (ForestillingNummer) REFERENCES Forestilling(Nummer) ON DELETE CASCADE ON UPDATE CASCADE
@@ -76,8 +76,7 @@ CREATE TABLE Billettkjøp (
     Tid TIME,
     PRIMARY KEY (Nummer, ForestillingNummer, TeaterstykkeNavn),
     FOREIGN KEY (ForestillingNummer) REFERENCES Forestilling(Nummer) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (Mobilnummer) REFERENCES Kundeprofil(Mobilnummer) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (TeaterstykkeNavn) REFERENCES Theaterstykke(Navn) ON DELETE CASCADE ON UPDATE CASCADE
+    FOREIGN KEY (TeaterstykkeNavn) REFERENCES Theaterstykke(Navn) ON DELETE CASCADE ON UPDATE CASCADE FOREIGN KEY (Mobilnummer) REFERENCES Kundeprofil(Mobilnummer) ON DELETE NULL ON UPDATE CASCADE
 );
 CREATE TABLE Forestilling (
     Nummer INTEGER AUTOINCREMENT NOT NULL,
