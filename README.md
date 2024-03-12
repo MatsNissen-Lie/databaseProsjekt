@@ -1,11 +1,16 @@
 # Hvordan Kjøre Oppgaven
 
-kjør fil for oppgave en og to
+Oppgave 1-2
 
-Se database her
-https://sqliteviewer.app/
+<!-- lag en link til filen -->
 
-eller bruk denne extentionen i VSCode
+[Oppgave 1-2](./oppgave1og2.ipynb)
+
+# se database i VSCode
+
+1. Installer SQLite extension i VSCode
+2. Åpne databasen i VSCode med command palette (Ctrl+Shift+P) og skriv `SQLite: Open Database`
+
 Name: SQLite
 Id: alexcvzz.vscode-sqlite
 Description: Explore and query SQLite databases.
