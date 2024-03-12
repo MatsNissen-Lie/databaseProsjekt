@@ -3,6 +3,10 @@
 Se database her
 https://sqliteviewer.app/
 
+
+
+
+
 eller bruk denne extentionen i VSCode
 Name: SQLite
 Id: alexcvzz.vscode-sqlite
