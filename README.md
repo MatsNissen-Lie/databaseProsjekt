@@ -2,7 +2,7 @@
 
 Kjør oppgave 1, 2 og 3 først, deretter kan du kjøre resten av oppgavene i vilkårlig rekkefølge.
 
-[Oppgave 123](./oppgave123.ipynb)
+[Oppgave 123](./oppgave1og2og3.ipynb)
 
 [Oppgave 4](./oppgave4.ipynb)
 
