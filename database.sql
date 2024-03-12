@@ -70,17 +70,18 @@ CREATE TABLE Billett (
 CREATE TABLE Billettkjøp (
     TeaterStykkeNavn VARCHAR(255) NOT NULL,
     ForestillingNummer INTEGER NOT NULL,
-    Nummer INTEGER AUTOINCREMENT NOT NULL,
+    Nummer INTEGER NOT NULL,
     Mobilnummer VARCHAR(20) NOT NULL,
     Dato DATE,
     Tid TIME,
     PRIMARY KEY (Nummer, ForestillingNummer, TeaterStykkeNavn),
     FOREIGN KEY (ForestillingNummer) REFERENCES Forestilling(Nummer) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (TeaterStykkeNavn) REFERENCES Theaterstykke(Navn) ON DELETE CASCADE ON UPDATE CASCADE FOREIGN KEY (Mobilnummer) REFERENCES Kundeprofil(Mobilnummer) ON DELETE NULL ON UPDATE CASCADE
+    FOREIGN KEY (Mobilnummer) REFERENCES Kundeprofil(Mobilnummer) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (TeaterStykkeNavn) REFERENCES Theaterstykke(Navn) ON DELETE CASCADE ON UPDATE CASCADE
 );
 CREATE TABLE Forestilling (
-    Nummer INTEGER AUTOINCREMENT NOT NULL,
     TeaterStykkeNavn VARCHAR(255) NOT NULL,
+    Nummer INTEGER NOT NULL,
     Dato DATE,
     Tid TIME,
     PRIMARY KEY (Nummer, TeaterStykkeNavn),
@@ -102,7 +103,7 @@ CREATE TABLE Rolle (
 );
 CREATE TABLE Akt (
     TeaterStykkeNavn VARCHAR(255) NOT NULL,
-    Nummer INT AUTOINCREMENT NOT NULL,
+    Nummer INTEGER NOT NULL,
     Aktnavn VARCHAR(255) NOT NULL,
     PRIMARY KEY (TeaterStykkeNavn, Nummer),
     FOREIGN KEY (TeaterStykkeNavn) REFERENCES Theaterstykke(Navn) ON DELETE CASCADE ON UPDATE CASCADE
