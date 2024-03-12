@@ -6,11 +6,11 @@ CREATE TABLE Theaterstykke (Navn VARCHAR(255) PRIMARY KEY NOT NULL);
 CREATE TABLE Oppgave (Beskrivelse TEXT PRIMARY KEY NOT NULL);
 CREATE TABLE Oppstilling (
     SesongId INTEGER NOT NULL,
-    TeaterstykkeNavn VARCHAR(255) NOT NULL,
+    TeaterStykkeNavn VARCHAR(255) NOT NULL,
     SalNavn VARCHAR(255) NOT NULL,
-    PRIMARY KEY (SesongId, TeaterstykkeNavn, SalNavn),
+    PRIMARY KEY (SesongId, TeaterStykkeNavn, SalNavn),
     FOREIGN KEY (SesongId) REFERENCES Sesong(SesongId) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (TeaterstykkeNavn) REFERENCES Theaterstykke(Navn) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (TeaterStykkeNavn) REFERENCES Theaterstykke(Navn) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (SalNavn) REFERENCES Teatersal(Navn) ON DELETE CASCADE ON UPDATE CASCADE
 );
 CREATE TABLE Ansatt (
@@ -54,7 +54,7 @@ CREATE TABLE Billett (
     ForestillingNummer INTEGER NOT NULL,
     BillettKjøpNummer INT NOT NULL,
     Billettype VARCHAR(255) NOT NULL,
-    TeaterstykkeNavn VARCHAR(255) NOT NULL,
+    TeaterStykkeNavn VARCHAR(255) NOT NULL,
     PRIMARY KEY (
         RadNr,
         StolNr,
@@ -63,20 +63,20 @@ CREATE TABLE Billett (
         ForestillingNummer
     ),
     FOREIGN KEY (BillettKjøpNummer) REFERENCES Billettkjøp(Nummer) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (Billettype, TeaterstykkeNavn) REFERENCES BilletType(Billettype, TeaterstykkeNavn) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (Billettype, TeaterStykkeNavn) REFERENCES BilletType(Billettype, TeaterStykkeNavn) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (RadNr, StolNr, Område, SalNavn) REFERENCES Stol(RadNr, StolNr, Område, Navn) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN Key (ForestillingNummer) REFERENCES Forestilling(Nummer) ON DELETE CASCADE ON UPDATE CASCADE
 );
 CREATE TABLE Billettkjøp (
-    TeaterstykkeNavn VARCHAR(255) NOT NULL,
+    TeaterStykkeNavn VARCHAR(255) NOT NULL,
     ForestillingNummer INTEGER NOT NULL,
     Nummer INTEGER AUTOINCREMENT NOT NULL,
     Mobilnummer VARCHAR(20) NOT NULL,
     Dato DATE,
     Tid TIME,
-    PRIMARY KEY (Nummer, ForestillingNummer, TeaterstykkeNavn),
+    PRIMARY KEY (Nummer, ForestillingNummer, TeaterStykkeNavn),
     FOREIGN KEY (ForestillingNummer) REFERENCES Forestilling(Nummer) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (TeaterstykkeNavn) REFERENCES Theaterstykke(Navn) ON DELETE CASCADE ON UPDATE CASCADE FOREIGN KEY (Mobilnummer) REFERENCES Kundeprofil(Mobilnummer) ON DELETE NULL ON UPDATE CASCADE
+    FOREIGN KEY (TeaterStykkeNavn) REFERENCES Theaterstykke(Navn) ON DELETE CASCADE ON UPDATE CASCADE FOREIGN KEY (Mobilnummer) REFERENCES Kundeprofil(Mobilnummer) ON DELETE NULL ON UPDATE CASCADE
 );
 CREATE TABLE Forestilling (
     Nummer INTEGER AUTOINCREMENT NOT NULL,
@@ -87,32 +87,32 @@ CREATE TABLE Forestilling (
     FOREIGN KEY (TeaterStykkeNavn) REFERENCES Theaterstykke(Navn) ON DELETE CASCADE ON UPDATE CASCADE
 );
 CREATE TABLE BilletType (
-    TeaterstykkeNavn VARCHAR(255) NOT NULL,
+    TeaterStykkeNavn VARCHAR(255) NOT NULL,
     Type VARCHAR(255) NOT NULL,
     Pris DECIMAL NOT NULL,
     MinAntall INT NOT NULL,
-    PRIMARY KEY (TeaterstykkeNavn, Type),
-    FOREIGN KEY (TeaterstykkeNavn) REFERENCES Theaterstykke(Navn) ON DELETE CASCADE ON UPDATE CASCADE
+    PRIMARY KEY (TeaterStykkeNavn, Type),
+    FOREIGN KEY (TeaterStykkeNavn) REFERENCES Theaterstykke(Navn) ON DELETE CASCADE ON UPDATE CASCADE
 );
 CREATE TABLE Rolle (
-    TeaterstykkeNavn VARCHAR(255) NOT NULL,
+    TeaterStykkeNavn VARCHAR(255) NOT NULL,
     Navn VARCHAR(255) NOT NULL,
-    PRIMARY KEY (TeaterstykkeNavn, Navn),
-    FOREIGN KEY (TeaterstykkeNavn) REFERENCES Theaterstykke(Navn) ON DELETE CASCADE ON UPDATE CASCADE
+    PRIMARY KEY (TeaterStykkeNavn, Navn),
+    FOREIGN KEY (TeaterStykkeNavn) REFERENCES Theaterstykke(Navn) ON DELETE CASCADE ON UPDATE CASCADE
 );
 CREATE TABLE Akt (
-    TeaterstykkeNavn VARCHAR(255) NOT NULL,
+    TeaterStykkeNavn VARCHAR(255) NOT NULL,
     Nummer INT AUTOINCREMENT NOT NULL,
     Aktnavn VARCHAR(255) NOT NULL,
-    PRIMARY KEY (TeaterstykkeNavn, Nummer),
-    FOREIGN KEY (TeaterstykkeNavn) REFERENCES Theaterstykke(Navn) ON DELETE CASCADE ON UPDATE CASCADE
+    PRIMARY KEY (TeaterStykkeNavn, Nummer),
+    FOREIGN KEY (TeaterStykkeNavn) REFERENCES Theaterstykke(Navn) ON DELETE CASCADE ON UPDATE CASCADE
 );
 CREATE TABLE RollePaAkt (
-    TeaterstykkeNavn VARCHAR(255) NOT NULL,
+    TeaterStykkeNavn VARCHAR(255) NOT NULL,
     Actnummer INT NOT NULL,
     RolleNavn VARCHAR(255) NOT NULL,
-    PRIMARY KEY (TeaterstykkeNavn, Actnummer, RolleNavn),
-    FOREIGN KEY (TeaterstykkeNavn) REFERENCES Theaterstykke(Navn) ON DELETE CASCADE ON UPDATE CASCADE,
+    PRIMARY KEY (TeaterStykkeNavn, Actnummer, RolleNavn),
+    FOREIGN KEY (TeaterStykkeNavn) REFERENCES Theaterstykke(Navn) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (RolleNavn) REFERENCES Rolle(Navn) ON DELETE CASCADE ON UPDATE CASCADE
 );
 CREATE TABLE Task (
@@ -126,10 +126,10 @@ CREATE TABLE Task (
 );
 CREATE TABLE Skuespiller (
     Identifikator INT NOT NULL,
-    TeaterstykkeNavn VARCHAR(255) NOT NULL,
+    TeaterStykkeNavn VARCHAR(255) NOT NULL,
     RolleNavn VARCHAR(255) NOT NULL,
-    PRIMARY KEY (Identifikator, TeaterstykkeNavn, RolleNavn),
+    PRIMARY KEY (Identifikator, TeaterStykkeNavn, RolleNavn),
     FOREIGN KEY (Identifikator) REFERENCES Ansatt(AnsattId) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (TeaterstykkeNavn) REFERENCES Theaterstykke(Navn) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (TeaterStykkeNavn) REFERENCES Theaterstykke(Navn) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (RolleNavn) REFERENCES Rolle(Navn) ON DELETE CASCADE ON UPDATE CASCADE
 );
