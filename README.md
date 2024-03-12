@@ -1,10 +1,8 @@
 # Hvordan Kjøre Oppgaven
 
-Kjør oppgave 1-2 først, deretter kan du kjøre resten av oppgavene i vilkårlig rekkefølge.
+Kjør oppgave 1, 2 og 3 først, deretter kan du kjøre resten av oppgavene i vilkårlig rekkefølge.
 
-[Oppgave 1-2](./oppgave1og2.ipynb)
-
-[Oppgave 3](./oppgave3.ipynb)
+[Oppgave 123](./oppgave123.ipynb)
 
 [Oppgave 4](./oppgave4.ipynb)
 
