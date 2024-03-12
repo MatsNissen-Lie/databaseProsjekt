@@ -1,11 +1,9 @@
 # Hvordan Kjøre Oppgaven
 
+kjør fil for oppgave en og to
+
 Se database her
 https://sqliteviewer.app/
-
-
-
-
 
 eller bruk denne extentionen i VSCode
 Name: SQLite
