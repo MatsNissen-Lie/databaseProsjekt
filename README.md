@@ -1,8 +1,12 @@
 # Hvordan Kjøre Oppgaven
 
-Kjør oppgave 1, 2 og 3 først, deretter kan du kjøre resten av oppgavene i vilkårlig rekkefølge.
+Kjør oppgave 1, 2, deretter kan du kjøre resten av oppgavene i vilkårlig rekkefølge.
 
-[Oppgave 123](./oppgave1og2og3.ipynb)
+Hvis du vil ha en clean database, er det bare å kjøre oppgave 1, 2 på nytt. De andre oppgavene vil alltid bruke den nyeste databasen i repo.
+
+[Oppgave 12](./oppgave1og2.ipynb)
+
+[Oppgave 3](./oppgave3.ipynb)
 
 [Oppgave 4](./oppgave4.ipynb)
 
